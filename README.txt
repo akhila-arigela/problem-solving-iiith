@@ -1,102 +1,68 @@
-Some changes need to be made to the web server configuration (in this case, Apache) in order to run the python scripts.
+steps to fork
+Step 1: Set up Git
+If you haven't yet, you should first set up Git. Don't forget to set up authentication to GitHub from Git as well.
 
-1. Install mod python
+Step 2: Create a local clone of your fork
+Right now, you have a fork of the Spoon-Knife repository, but you don't have the files in that repository on your computer. Let's create a clone of your fork locally on your computer.
 
-        apt-get install libapache2-mod-python
+On GitHub, navigate to your fork of the Spoon-Knife repository.
 
-2. Add Following lines to /etc/apache2/sites-available/default
+Above the list of files, click  Code.
 
-	<Directory /var/www/>
-          AddHandler mod_python .py
-          PythonHandler mod_python.publisher
-          PythonDebug On
-        </Directory>
+"Code" button
+To clone the repository using HTTPS, under "Clone with HTTPS", click . To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click .
 
+The clipboard icon for copying the URL to clone a repository
+Open Git Bash.
 
-3. restart Apache server
+Change the current working directory to the location where you want the cloned directory.
 
-        /etc/init.d/apache2 restart
+Type git clone, and then paste the URL you copied earlier. It will look like this, with your GitHub username instead of YOUR-USERNAME:
 
-Congrats !!
+$ git clone https://github.com/YOUR-USERNAME/Spoon-Knife
+Press Enter. Your local clone will be created.
 
-* You have successfully downloaded and extracted the
-  ui.tgz .
+$ git clone https://github.com/YOUR-USERNAME/Spoon-Knife
+> Cloning into `Spoon-Knife`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+Now, you have a local copy of your fork of the Spoon-Knife repository.
 
+Step 3: Configure Git to sync your fork with the original Spoon-Knife repository
+When you fork a project in order to propose changes to the original repository, you can configure Git to pull changes from the original, or upstream, repository into the local clone of your fork.
 
-* Changes: New Tabs have been added for 
-	-    Target Audience
-	-    Courses Aligned
-	-    Pre-requisite Softwares 
+On GitHub, navigate to the octocat/Spoon-Knife repository.
 
-You need to added 3 more sections on virtual lab home page
+Above the list of files, click  Code.
 
-3) Target Audience
-4) Courses Aligned
-5) Pre-requisite Softwares
+"Code" button
+To clone the repository using HTTPS, under "Clone with HTTPS", click . To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click .
 
-You can make the above said changes by editing content.html. To update the changes
+The clipboard icon for copying the URL to clone a repository
+Open Git Bash.
 
-1)  open content.html in your fav editor and search for last closing html tag </section>.
-2) Open the change.html file and open it in your fav. editor.
-3) Copy all content of change.html 
-4) Paste it after the last closing html tag </section> (you searched in Step1).
-5) Go to ui/src and run  " make theme=blue-icon"     on command terminal  to change theme to blue
+Change directories to the location of the fork you cloned in Step 2: Create a local clone of your fork.
 
+To go to your home directory, type just cd with no other text.
+To list the files and folders in your current directory, type ls.
+To go into one of your listed directories, type cd your_listed_directory.
+To go up one directory, type cd ...
+Type git remote -v and press Enter. You'll see the current configured remote repository for your fork.
 
-We had attached change.html in folder.  You can copy the whole content and paste it in content.html .
+$ git remote -v
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+Type git remote add upstream, and then paste the URL you copied in Step 2 and press Enter. It will look like this:
 
+$ git remote add upstream https://github.com/octocat/Spoon-Knife.git
+To verify the new upstream repository you've specified for your fork, type git remote -v again. You should see the URL for your fork as origin, and the URL for the original repository as upstream.
 
-Below is snapshot how content.html will look like
-<!-- Second section of the article-->
-<section id="lab-article-section-2">
-
-<div id="lab-article-section-2-icon" class="icon">
-  <!-- Enclose the icon image for the section. -->
-  <img src="images/simulation.jpg" />
-</div>
-
-
-<!-- The heading for the section can be enclosed in a 
-div tag and shown with a <h2> tag -->
-<div id="lab-article-section-2-heading" class="heading">
-  List of experiments
-</div>
-			
-<!-- Write the section content inside a paragraph 
-element, You can also include images with <img> tag -->
-<div id="lab-article-section-2-content" class="content">
-  <ul id="list-of-experiments">
-  
-    <li> 
-      <!--Link and name of the experiment 1 -->
-      <a href="exp1/index.html">Simple Pendulum Experiment</a> 
-    </li>
-  </ul>
-</div>
-
-</section>
-
-// PASTE the CHANGE.html content here..
-
-
-/*****************************************************************/
-
-
-
-
-
-
-
-
-
-* Now run makefile by the following commands inside the 'ui/src' folder to
-  change the default theme :
-
-Go to Command Terminal
-	 $ cd ui_extracted_folder // Where u have extracted the ui kit
-	 $ cd ui/src
-         $ make clean all 
-	 $ make theme=blue-icon
-
-* Now, open ui/build/index.html in the browser to test the template.
+$ git remote -v
+> origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+> origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+> upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+> upstream  https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
+Now, you can keep your fork synced with the upstream repository with a few Git commands. For more information, see "Syncing a fork."
 
